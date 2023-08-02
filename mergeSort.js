@@ -3,13 +3,57 @@
 //sort left half of elements
 //sort right half of elements
 //merge sorted halves
-const list = [1, 2, 3, 4, 5, 6];
+
+
+const list = [38,27,43,10,10000];
+
+const merge = (left, right) =>{
+	let sortedArray =[]
+	let i = 0;
+	let j = 0;
+	
+	let leftLength = left.length;
+	let rightLength= right.length;
+	
+	
+	while ( i<leftLength && j <rightLength)
+	{
+	if(left[i] < right[j])
+		{
+	  sortedArray.push(left[i++]);
+	
+	
+		} else  
+		{
+		sortedArray.push( right[j++]);
+	
+		}
+	
+	}
+	
+	while (i < leftLength) {
+	 sortedArray.push(left[i++]);
+	}
+	
+	while (j < rightLength) {
+	 sortedArray.push(right[j++]);
+	}
+	return sortedArray
+	}
+
 const mergeSort = (array) => {
-	let left = array.slice(0, Math.ceil(array.length / 2));
-	let right = array.slice(Math.ceil(array.length / 2));
 
-	console.log(left);
-	console.log(right);
-};
+	const mid = Math.floor(array.length / 2)
+	let left = array.slice(0, mid);
+	let right = array.slice(mid);
+	
+	if(array.length <2)
+	{
+	return array
+	} else {
+	}
+	return merge(mergeSort(left), mergeSort(right));
+	};
+	
+	console.log(mergeSort(list));
 
-console.log(mergeSort(list));
